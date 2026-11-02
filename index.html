@@ -74,8 +74,28 @@ body {
 .chg.up { color: var(--up); }
 .chg.down { color: var(--down); }
 .chg.flat { color: var(--muted); }
-.spark { width: 100%; height: 48px; display: block; }
-.spark path { fill: none; stroke: var(--accent); stroke-width: 2; }
+.chart { margin: 6px 0 2px; }
+.chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; -webkit-tap-highlight-color: transparent; user-select: none; }
+.chart .gl { stroke: var(--line); stroke-width: 1; }
+.chart .yl { fill: var(--muted); font-size: 10px; text-anchor: end; font-variant-numeric: tabular-nums; }
+.chart .xl { fill: var(--muted); font-size: 10px; text-anchor: middle; }
+.chart .ln { fill: none; stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; }
+.chart .list-ln { stroke: var(--accent); }
+.chart .camp-ln { stroke: var(--down); stroke-dasharray: 5 4; }
+.chart .list-dt { fill: var(--accent); stroke: var(--card); stroke-width: 1.5; }
+.chart .camp-dt { fill: var(--down); stroke: var(--card); stroke-width: 1.5; }
+.chart .cursor { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 3; }
+.chart .hit { fill: transparent; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
+.legend { display: flex; gap: 14px; font-size: .78rem; color: var(--muted); margin-top: 2px; }
+.legend span::before { content: ""; display: inline-block; width: 16px; height: 0; vertical-align: middle; margin-right: 5px; border-top: 2.5px solid; }
+.lg-list::before { border-color: var(--accent) !important; }
+.lg-camp::before { border-color: var(--down) !important; border-top-style: dashed !important; }
+.readout { font-size: .82rem; color: var(--muted); min-height: 1.4em; margin-top: 2px; }
+.readout b { color: var(--text); font-weight: 600; }
+.camp-txt { color: var(--down); }
+.chart-note { font-size: .8rem; color: var(--muted); font-style: italic; }
+th { text-align: left; font-weight: 600; color: var(--muted); padding: 3px 0; font-size: .78rem; }
+th:not(:first-child), td:not(:first-child) { text-align: right; }
 .empty { color: var(--muted); font-style: italic; }
 
 details { font-size: .85rem; }
@@ -141,16 +161,63 @@ a { color: var(--accent); }
     return vals.length ? Math.min(...vals) : null;
   };
 
-  function sparkline(prices) {
-    if (prices.length < 2) return "";
-    const w = 260, h = 48, pad = 4;
-    const vals = prices.map((p) => p.price);
-    const min = Math.min(...vals), max = Math.max(...vals);
-    const x = (i) => pad + (i * (w - 2 * pad)) / (vals.length - 1);
-    const y = (v) => (max === min ? h / 2 : h - pad - ((v - min) * (h - 2 * pad)) / (max - min));
-    const d = vals.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-    return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Fiyat geçmişi grafiği">
-      <path d="${d}" vector-effect="non-scaling-stroke"/></svg>`;
+  const MONTH = new Intl.DateTimeFormat("tr-TR", { month: "short" });
+  const MONTH_LONG = new Intl.DateTimeFormat("tr-TR", { month: "long", year: "numeric" });
+  const mn = (v) => (v / 1e6).toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " mn";
+
+  // Fiyat geçmişi grafiği: liste (düz çizgi) + kampanyalı (kesikli çizgi)
+  function chart(prices) {
+    if (prices.length < 2) return `<div class="chart-note">Grafik için en az iki aylık fiyat gerekiyor.</div>`;
+    const W = 320, H = 150, L = 50, R = 12, T = 12, B = 24;
+    const all = prices.flatMap((p) => (p.campaign ? [p.price, p.campaign] : [p.price]));
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const padY = (hi - lo) * 0.12 || hi * 0.03;
+    lo -= padY; hi += padY;
+    const x = (i) => L + (i * (W - L - R)) / (prices.length - 1);
+    const y = (v) => T + ((hi - v) * (H - T - B)) / (hi - lo);
+    const ticks = [hi - padY, (hi + lo) / 2, lo + padY];
+
+    const grid = ticks.map((v) =>
+      `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}"/>
+       <text class="yl" x="${L - 6}" y="${(y(v) + 3.5).toFixed(1)}">${mn(v)}</text>`).join("");
+    const xl = prices.map((p, i) =>
+      `<text class="xl" x="${x(i).toFixed(1)}" y="${H - 6}">${esc(MONTH.format(new Date(p.date + "T00:00:00")))}</text>`).join("");
+    const line = (pts, cls) => pts.length > 1
+      ? `<path class="${cls}" d="${pts.map(([i, v], k) => `${k ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ")}"/>` : "";
+    const listPts = prices.map((p, i) => [i, p.price]);
+    const campPts = prices.map((p, i) => [i, p.campaign]).filter(([, v]) => v);
+    const dots = (pts, cls) => pts.map(([i, v]) =>
+      `<circle class="${cls}" cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3.5"/>`).join("");
+    // Dokunma alanları: her ay için görünmez bir sütun
+    const hits = prices.map((p, i) => {
+      const w = (W - L - R) / Math.max(prices.length - 1, 1);
+      return `<rect class="hit" data-i="${i}" x="${(x(i) - w / 2).toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${H}"/>`;
+    }).join("");
+
+    return `<div class="chart">
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Fiyat geçmişi grafiği">
+        ${grid}${xl}
+        ${line(campPts, "ln camp-ln")}${line(listPts, "ln list-ln")}
+        ${dots(campPts, "dt camp-dt")}${dots(listPts, "dt list-dt")}
+        <line class="cursor" x1="0" x2="0" y1="${T}" y2="${H - B}" visibility="hidden"/>
+        ${hits}
+      </svg>
+      <div class="legend"><span class="lg-list">Liste</span>${campPts.length ? `<span class="lg-camp">Kampanyalı</span>` : ""}</div>
+      <div class="readout">Ay üzerine dokunarak fiyatı görün</div>
+    </div>`;
+  }
+
+  // Grafikte bir aya dokunulunca/üzerine gelinince o ayın fiyatını göster
+  function showPoint(rect) {
+    const cardEl = rect.closest(".card");
+    const c = cars.find((x) => x.id === cardEl.dataset.id);
+    const p = c.prices[+rect.dataset.i];
+    const cx = +rect.getAttribute("x") + +rect.getAttribute("width") / 2;
+    const cur = cardEl.querySelector(".cursor");
+    cur.setAttribute("x1", cx); cur.setAttribute("x2", cx); cur.setAttribute("visibility", "visible");
+    cardEl.querySelector(".readout").innerHTML =
+      `<b>${esc(MONTH_LONG.format(new Date(p.date + "T00:00:00")))}</b>: ${TL.format(p.price)}` +
+      (p.campaign ? ` · <span class="camp-txt">kampanyalı ${TL.format(p.campaign)}</span>` : "");
   }
 
   function changeBadge(c) {
@@ -181,15 +248,15 @@ a { color: var(--accent); }
       ? `<div class="price">${TL.format(c.last.price)} <span class="lbl">liste</span></div>
          ${campaign}
          ${changeBadge(c)}
-         ${sparkline(c.prices)}
+         ${chart(c.prices)}
          <div class="meta">${fmtDate(c.last.date)} · <a href="${esc(c.last.source)}" target="_blank" rel="noopener">kaynak</a></div>
-         <details><summary>Fiyat geçmişi (${c.prices.length})</summary>
-           <table>${[...c.prices].reverse().map((p) =>
-             `<tr><td>${fmtDate(p.date)}</td><td><a href="${esc(p.source)}" target="_blank" rel="noopener">${TL.format(p.price)}</a></td></tr>`
+         <details><summary>Fiyat geçmişi tablosu (${c.prices.length})</summary>
+           <table><tr><th>Tarih</th><th>Liste</th><th>Kampanyalı</th></tr>${[...c.prices].reverse().map((p) =>
+             `<tr><td>${fmtDate(p.date)}</td><td><a href="${esc(p.source)}" target="_blank" rel="noopener">${TL.format(p.price)}</a></td><td>${p.campaign ? TL.format(p.campaign) : "—"}</td></tr>`
            ).join("")}</table>
          </details>`
       : `<div class="empty">Henüz fiyat girilmedi.</div>`;
-    return `<article class="card">
+    return `<article class="card" data-id="${esc(c.id)}">
       <h3>${esc(c.trim || "Standart")}</h3>
       ${spec ? `<div class="meta">${spec}</div>` : ""}
       ${body}
@@ -243,6 +310,9 @@ a { color: var(--accent); }
       cars = data.cars.map(enrich);
       $("updated").textContent = data.updated ? `son güncelleme: ${fmtDate(data.updated)}` : "henüz güncellenmedi";
       window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+      for (const ev of ["click", "pointerover"]) {
+        $("list").addEventListener(ev, (e) => { if (e.target.matches?.(".hit")) showPoint(e.target); });
+      }
       render();
     } catch (e) {
       $("list").innerHTML = `<p class="msg">Veri yüklenemedi (${esc(e.message)}).</p>`;
