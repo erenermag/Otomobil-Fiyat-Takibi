@@ -15,9 +15,9 @@ GitHub Pages üzerinde yayınlanan statik bir site.
 
 ## Güncelleme akışı
 
-1. Haftalık görev fiyatları araştırır, `data/cars.json` dosyasını günceller ve bir PR açar.
+1. Haftalık görev (her pazartesi) fiyatları araştırır, `data/cars.json` dosyasını günceller ve bir PR açar. Yeni fiyat yoksa hiçbir şey yapmaz.
 2. GitHub Actions veriyi doğrular. Rapor tablosu, PR'daki kontrolün **Summary** sekmesinde görünür.
-3. PR'ı kontrol edip birleştirirsin. Site birkaç dakika içinde güncellenir.
+3. Kontrol geçer ve şüpheli değişim (⚠️) yoksa görev PR'ı kendisi birleştirir; varsa PR senin onayını bekler. Site birkaç dakika içinde güncellenir.
 
 ## GitHub Pages'i açma (bir kerelik)
 

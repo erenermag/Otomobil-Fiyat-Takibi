@@ -46,7 +46,15 @@ Takip edilen modeller: Fiat Egea Sedan, Fiat Egea Cross, Toyota Corolla Hybrid
    - Doğrulama betiğinin ürettiği rapor tablosu
    - %15'ten büyük değişimler için kısa açıklama (yeni model yılı, zam duyurusu vb.)
    - Fiyatı bulunamayan araçlar
-9. PR'ı **birleştirme**. Birleştirme kararı repo sahibinindir.
+9. Birleştirme kuralı:
+   - PR'daki GitHub Actions kontrolü **geçtiyse** ve doğrulama raporunda
+     **⚠️ uyarı yoksa** (%15'ten büyük değişim, kampanya ≥ liste vb.), PR'ı
+     squash ile birleştir. Site birkaç dakika içinde güncellenir.
+   - Uyarı varsa ya da kaynaklar birbiriyle çelişiyorsa PR'ı **açık bırak**;
+   karar repo sahibinindir.
+
+Eklenecek yeni fiyat yoksa (yeni ay listesi yayımlanmamış ve fiyatlar aynı)
+dal, commit veya PR açma; sadece "değişiklik yok" diye raporla.
 
 ## Yeni araç eklemek
 
