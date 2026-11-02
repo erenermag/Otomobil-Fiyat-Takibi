@@ -60,13 +60,45 @@
     </article>`;
   }
 
+  const sortTr = (arr) => [...new Set(arr)].sort((a, b) => a.localeCompare(b, "tr"));
+  const options = (vals) => vals.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+
+  // Seçilen markaya göre model listesini doldurur
+  function fillModels(selected = "") {
+    const brand = $("brand").value;
+    const models = sortTr(cars.filter((c) => !brand || c.brand === brand).map((c) => c.model));
+    $("model").innerHTML = `<option value="">Tüm modeller</option>` + options(models);
+    $("model").value = models.includes(selected) ? selected : "";
+  }
+
+  // Seçimi adres çubuğunda tutar (#marka=Fiat&model=Egea%20Cross): link paylaşılabilir
+  function saveSelection() {
+    const p = new URLSearchParams();
+    if ($("brand").value) p.set("marka", $("brand").value);
+    if ($("model").value) p.set("model", $("model").value);
+    const hash = p.toString();
+    history.replaceState(null, "", hash ? `#${hash}` : location.pathname + location.search);
+    try { localStorage.setItem("secim", hash); } catch {}
+  }
+
+  function loadSelection() {
+    let hash = location.hash.slice(1);
+    if (!hash) try { hash = localStorage.getItem("secim") || ""; } catch {}
+    const p = new URLSearchParams(hash);
+    const brand = p.get("marka") || "";
+    $("brand").value = cars.some((c) => c.brand === brand) ? brand : "";
+    fillModels(p.get("model") || "");
+  }
+
   function render() {
     const brand = $("brand").value;
+    const model = $("model").value;
     const q = $("q").value.trim().toLocaleLowerCase("tr");
     const sort = $("sort").value;
     const big = Number.MAX_SAFE_INTEGER;
     const list = cars
       .filter((c) => !brand || c.brand === brand)
+      .filter((c) => !model || c.model === model)
       .filter((c) => !q || `${c.brand} ${c.model} ${c.trim} ${c.engine}`.toLocaleLowerCase("tr").includes(q))
       .sort((a, b) => {
         switch (sort) {
@@ -103,9 +135,12 @@
       const data = await res.json();
       cars = data.cars.map(enrich);
       $("updated").textContent = data.updated ? `son güncelleme: ${fmtDate(data.updated)}` : "henüz güncellenmedi";
-      const brands = [...new Set(cars.map((c) => c.brand))].sort((a, b) => a.localeCompare(b, "tr"));
-      $("brand").insertAdjacentHTML("beforeend", brands.map((b) => `<option>${esc(b)}</option>`).join(""));
-      ["brand", "sort", "q"].forEach((id) => $(id).addEventListener("input", render));
+      $("brand").insertAdjacentHTML("beforeend", options(sortTr(cars.map((c) => c.brand))));
+      loadSelection();
+      $("brand").addEventListener("change", () => { fillModels(); saveSelection(); render(); });
+      $("model").addEventListener("change", () => { saveSelection(); render(); });
+      ["sort", "q"].forEach((id) => $(id).addEventListener("input", render));
+      window.addEventListener("hashchange", () => { loadSelection(); render(); });
       render();
     } catch (e) {
       $("list").innerHTML = `<p class="msg">Veri yüklenemedi (${esc(e.message)}).</p>`;
