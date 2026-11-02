@@ -4,6 +4,16 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const fmtDate = (d) => DATE.format(new Date(d + "T00:00:00"));
+  const sortTr = (arr) => [...new Set(arr)].sort((a, b) => a.localeCompare(b, "tr"));
+
+  // Adres: #marka=Fiat&model=Egea+Cross (paylaşılabilir, geri tuşu çalışır)
+  const link = (brand, model) => {
+    const p = new URLSearchParams();
+    if (brand) p.set("marka", brand);
+    if (model) p.set("model", model);
+    const s = p.toString();
+    return s ? `#${s}` : "#";
+  };
 
   let cars = [];
 
@@ -15,6 +25,11 @@
     return { ...car, last, prev, change };
   }
 
+  const minPrice = (list) => {
+    const vals = list.filter((c) => c.last).map((c) => c.last.price);
+    return vals.length ? Math.min(...vals) : null;
+  };
+
   function sparkline(prices) {
     if (prices.length < 2) return "";
     const w = 260, h = 48, pad = 4;
@@ -23,19 +38,29 @@
     const x = (i) => pad + (i * (w - 2 * pad)) / (vals.length - 1);
     const y = (v) => (max === min ? h / 2 : h - pad - ((v - min) * (h - 2 * pad)) / (max - min));
     const d = vals.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-    const lx = x(vals.length - 1), ly = y(vals[vals.length - 1]);
     return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="Fiyat geçmişi grafiği">
-      <path d="${d}" vector-effect="non-scaling-stroke"/><circle cx="${lx}" cy="${ly}" r="3"/></svg>`;
+      <path d="${d}" vector-effect="non-scaling-stroke"/></svg>`;
   }
 
   function changeBadge(c) {
     if (c.change === null) return c.last ? `<span class="chg flat">ilk kayıt</span>` : "";
-    const pct = (c.change * 100).toFixed(1).replace(".", ",");
-    if (c.change > 0) return `<span class="chg up">▲ %${pct} (+${TL.format(c.last.price - c.prev.price)})</span>`;
-    if (c.change < 0) return `<span class="chg down">▼ %${pct.replace("-", "")} (${TL.format(c.last.price - c.prev.price)})</span>`;
+    const pct = Math.abs(c.change * 100).toFixed(1).replace(".", ",");
+    const diff = TL.format(Math.abs(c.last.price - c.prev.price));
+    if (c.change > 0) return `<span class="chg up">▲ %${pct} (+${diff})</span>`;
+    if (c.change < 0) return `<span class="chg down">▼ %${pct} (−${diff})</span>`;
     return `<span class="chg flat">değişmedi</span>`;
   }
 
+  // Marka / model seçim kutusu
+  function tile(href, name, detail, price) {
+    return `<a class="tile" href="${href}">
+      <span class="tile-name">${esc(name)}</span>
+      <span class="tile-detail">${esc(detail)}</span>
+      ${price !== null ? `<span class="tile-price">${TL.format(price)}<small>'den başlayan</small></span>` : ""}
+    </a>`;
+  }
+
+  // Donanım kartı
   function card(c) {
     const spec = [c.engine, c.fuel, c.transmission].filter(Boolean).map(esc).join(" · ");
     const campaign = c.last?.campaign
@@ -60,72 +85,43 @@
     </article>`;
   }
 
-  const sortTr = (arr) => [...new Set(arr)].sort((a, b) => a.localeCompare(b, "tr"));
-  const options = (vals) => vals.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
-
-  // Seçilen markaya göre model listesini doldurur
-  function fillModels(selected = "") {
-    const brand = $("brand").value;
-    const models = sortTr(cars.filter((c) => !brand || c.brand === brand).map((c) => c.model));
-    $("model").innerHTML = `<option value="">Tüm modeller</option>` + options(models);
-    $("model").value = models.includes(selected) ? selected : "";
-  }
-
-  // Seçimi adres çubuğunda tutar (#marka=Fiat&model=Egea%20Cross): link paylaşılabilir
-  function saveSelection() {
-    const p = new URLSearchParams();
-    if ($("brand").value) p.set("marka", $("brand").value);
-    if ($("model").value) p.set("model", $("model").value);
-    const hash = p.toString();
-    history.replaceState(null, "", hash ? `#${hash}` : location.pathname + location.search);
-    try { localStorage.setItem("secim", hash); } catch {}
-  }
-
-  function loadSelection() {
-    let hash = location.hash.slice(1);
-    if (!hash) try { hash = localStorage.getItem("secim") || ""; } catch {}
-    const p = new URLSearchParams(hash);
-    const brand = p.get("marka") || "";
-    $("brand").value = cars.some((c) => c.brand === brand) ? brand : "";
-    fillModels(p.get("model") || "");
-  }
-
   function render() {
-    const brand = $("brand").value;
-    const model = $("model").value;
-    const q = $("q").value.trim().toLocaleLowerCase("tr");
-    const sort = $("sort").value;
-    const big = Number.MAX_SAFE_INTEGER;
-    const list = cars
-      .filter((c) => !brand || c.brand === brand)
-      .filter((c) => !model || c.model === model)
-      .filter((c) => !q || `${c.brand} ${c.model} ${c.trim} ${c.engine}`.toLocaleLowerCase("tr").includes(q))
-      .sort((a, b) => {
-        switch (sort) {
-          case "price-desc": return (b.last?.price ?? -1) - (a.last?.price ?? -1);
-          case "change-desc": return (b.change ?? -big) - (a.change ?? -big);
-          case "name": return `${a.trim} ${a.engine}`.localeCompare(`${b.trim} ${b.engine}`, "tr");
-          default: return (a.last?.price ?? big) - (b.last?.price ?? big);
-        }
-      });
-    if (!list.length) {
-      $("list").innerHTML = `<p class="msg">Eşleşen araç yok.</p>`;
-      return;
+    const p = new URLSearchParams(location.hash.slice(1));
+    let brand = p.get("marka") || "";
+    let model = p.get("model") || "";
+    if (!cars.some((c) => c.brand === brand)) brand = model = "";
+    if (!cars.some((c) => c.brand === brand && c.model === model)) model = "";
+
+    const crumbs = [`<a href="#">Markalar</a>`];
+    if (brand) crumbs.push(model ? `<a href="${link(brand)}">${esc(brand)}</a>` : `<span>${esc(brand)}</span>`);
+    if (model) crumbs.push(`<span>${esc(model)}</span>`);
+    $("crumbs").innerHTML = brand ? crumbs.join(`<span class="sep">›</span>`) : "";
+
+    if (!brand) {
+      // 1. adım: markalar
+      $("title").textContent = "Marka seçin";
+      $("list").innerHTML = `<div class="tiles">${sortTr(cars.map((c) => c.brand)).map((b) => {
+        const items = cars.filter((c) => c.brand === b);
+        const n = new Set(items.map((c) => c.model)).size;
+        return tile(link(b), b, `${n} model`, minPrice(items));
+      }).join("")}</div>`;
+    } else if (!model) {
+      // 2. adım: seçilen markanın modelleri
+      $("title").textContent = `${brand} · model seçin`;
+      const inBrand = cars.filter((c) => c.brand === brand);
+      $("list").innerHTML = `<div class="tiles">${sortTr(inBrand.map((c) => c.model)).map((m) => {
+        const items = inBrand.filter((c) => c.model === m);
+        return tile(link(brand, m), m, `${items.length} donanım`, minPrice(items));
+      }).join("")}</div>`;
+    } else {
+      // 3. adım: modelin donanımları (fiyata göre artan)
+      const items = cars
+        .filter((c) => c.brand === brand && c.model === model)
+        .sort((a, b) => (a.last?.price ?? Infinity) - (b.last?.price ?? Infinity));
+      $("title").textContent = `${brand} ${model}`;
+      $("list").innerHTML = `<div class="grid">${items.map(card).join("")}</div>`;
     }
-    // Model bazında grupla (sıralama grup içinde uygulanır)
-    const groups = new Map();
-    for (const c of list) {
-      const key = `${c.brand} ${c.model}`;
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(c);
-    }
-    const keys = [...groups.keys()].sort((a, b) => a.localeCompare(b, "tr"));
-    $("list").innerHTML = keys.map((k) => {
-      const items = groups.get(k);
-      const priced = items.filter((c) => c.last).map((c) => c.last.price);
-      const from = priced.length ? ` <span class="from">${TL.format(Math.min(...priced))}'den başlayan</span>` : "";
-      return `<section class="group"><h2>${esc(k)}${from}</h2><div class="grid">${items.map(card).join("")}</div></section>`;
-    }).join("");
+    document.title = [model && `${brand} ${model}`, !model && brand, "Sıfır Araç Fiyat Takibi"].filter(Boolean).join(" · ");
   }
 
   async function init() {
@@ -135,12 +131,7 @@
       const data = await res.json();
       cars = data.cars.map(enrich);
       $("updated").textContent = data.updated ? `son güncelleme: ${fmtDate(data.updated)}` : "henüz güncellenmedi";
-      $("brand").insertAdjacentHTML("beforeend", options(sortTr(cars.map((c) => c.brand))));
-      loadSelection();
-      $("brand").addEventListener("change", () => { fillModels(); saveSelection(); render(); });
-      $("model").addEventListener("change", () => { saveSelection(); render(); });
-      ["sort", "q"].forEach((id) => $(id).addEventListener("input", render));
-      window.addEventListener("hashchange", () => { loadSelection(); render(); });
+      window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
       render();
     } catch (e) {
       $("list").innerHTML = `<p class="msg">Veri yüklenemedi (${esc(e.message)}).</p>`;
