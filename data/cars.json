@@ -12,6 +12,23 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-09",
+          "price": 1499900,
+          "source": "https://www.ekonomist.com.tr/otomotiv/fiat-temmuz-2026-binek-arac-fiyat-listesini-acikladi-iste-egea-grande-panda-ve-tum-modellerde-son-belirlenen-fiyatlar-76689",
+          "campaign": 1369900
+        },
+        {
+          "date": "2026-08-03",
+          "price": 1499900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1384900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 1499900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618"
+        },
+        {
           "date": "2026-10-03",
           "price": 1499900,
           "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644"
@@ -28,6 +45,18 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-08-03",
+          "price": 1889900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1789900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 1950900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1850900
+        },
         {
           "date": "2026-10-03",
           "price": 1950900,
@@ -47,6 +76,18 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-08-03",
+          "price": 1599900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1489900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 1599900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1519900
+        },
+        {
           "date": "2026-10-03",
           "price": 1599900,
           "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
@@ -64,6 +105,18 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-08-03",
+          "price": 1959900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1859900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 2020900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1920900
+        },
         {
           "date": "2026-10-03",
           "price": 2020900,
@@ -83,6 +136,18 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-08-03",
+          "price": 1674900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1559900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 1674900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1589900
+        },
+        {
           "date": "2026-10-03",
           "price": 1674900,
           "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
@@ -100,6 +165,18 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-08-03",
+          "price": 2029900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1929900
+        },
+        {
+          "date": "2026-09-06",
+          "price": 2090900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1990900
+        },
         {
           "date": "2026-10-03",
           "price": 2090900,
@@ -119,6 +196,24 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-09",
+          "price": 1880500,
+          "source": "https://www.ekonomist.com.tr/otomotiv/fiat-temmuz-2026-binek-arac-fiyat-listesini-acikladi-iste-egea-grande-panda-ve-tum-modellerde-son-belirlenen-fiyatlar-76689",
+          "campaign": 1780500
+        },
+        {
+          "date": "2026-08-03",
+          "price": 1950500,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1850500
+        },
+        {
+          "date": "2026-09-06",
+          "price": 1990900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1890900
+        },
+        {
           "date": "2026-10-03",
           "price": 1990900,
           "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
@@ -136,6 +231,18 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-08-03",
+          "price": 1980500,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1880500
+        },
+        {
+          "date": "2026-09-06",
+          "price": 2026900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1926900
+        },
         {
           "date": "2026-10-03",
           "price": 2026900,
@@ -155,6 +262,18 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-08-03",
+          "price": 2050500,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1950500
+        },
+        {
+          "date": "2026-09-06",
+          "price": 2062900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1962900
+        },
+        {
           "date": "2026-10-03",
           "price": 2062900,
           "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
@@ -172,6 +291,18 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-08-03",
+          "price": 2090500,
+          "source": "https://www.cnbce.com/otomotiv/fiat-agustos-fiyat-listesini-acikladi-uretimi-sonlanan-modele-zam-geldi-iste-yeni-fiyatlar-h34305",
+          "campaign": 1990500
+        },
+        {
+          "date": "2026-09-06",
+          "price": 2099900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-eylul-2026-fiyatlarini-acikladi-egea-ve-diger-modellere-zam-geldi-g36618",
+          "campaign": 1999900
+        },
         {
           "date": "2026-10-03",
           "price": 2099900,
@@ -191,6 +322,21 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-01",
+          "price": 2808000,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html"
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2808000,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html"
+        },
+        {
+          "date": "2026-09-07",
+          "price": 2968000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html"
+        },
+        {
           "date": "2026-10-06",
           "price": 2968000,
           "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html"
@@ -207,6 +353,24 @@
       "transmission": "e-CVT",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-01",
+          "price": 2888000,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html",
+          "campaign": 2530000
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2888000,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html",
+          "campaign": 2530000
+        },
+        {
+          "date": "2026-09-07",
+          "price": 3053000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html",
+          "campaign": 2540000
+        },
         {
           "date": "2026-10-06",
           "price": 3053000,
@@ -226,6 +390,24 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-01",
+          "price": 3119000,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html",
+          "campaign": 2717000
+        },
+        {
+          "date": "2026-08-05",
+          "price": 3119000,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html",
+          "campaign": 2717000
+        },
+        {
+          "date": "2026-09-07",
+          "price": 3297000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html",
+          "campaign": 2775000
+        },
+        {
           "date": "2026-10-06",
           "price": 3297000,
           "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
@@ -243,6 +425,24 @@
       "transmission": "e-CVT",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-01",
+          "price": 3320000,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html",
+          "campaign": 2820000
+        },
+        {
+          "date": "2026-08-05",
+          "price": 3320000,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html",
+          "campaign": 2820000
+        },
+        {
+          "date": "2026-09-07",
+          "price": 3385000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html",
+          "campaign": 2875000
+        },
         {
           "date": "2026-10-06",
           "price": 3413000,
@@ -262,6 +462,24 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-01",
+          "price": 3556000,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html",
+          "campaign": 3024000
+        },
+        {
+          "date": "2026-08-05",
+          "price": 3556000,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html",
+          "campaign": 3024000
+        },
+        {
+          "date": "2026-09-07",
+          "price": 3625000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html",
+          "campaign": 3080000
+        },
+        {
           "date": "2026-10-06",
           "price": 3660000,
           "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
@@ -279,6 +497,24 @@
       "transmission": "e-CVT",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-01",
+          "price": 4120500,
+          "source": "https://www.webtekno.com/temmuz-2026-toyota-fiyat-listesi-h219491.html",
+          "campaign": 3504000
+        },
+        {
+          "date": "2026-08-05",
+          "price": 4120500,
+          "source": "https://www.webtekno.com/agustos-2026-toyota-fiyat-listesi-h221704.html",
+          "campaign": 3504000
+        },
+        {
+          "date": "2026-09-07",
+          "price": 4195000,
+          "source": "https://www.webtekno.com/toyota-eylul-2026-fiyat-listesi-h223811.html",
+          "campaign": 3567000
+        },
         {
           "date": "2026-10-06",
           "price": 4234000,
@@ -298,6 +534,24 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-03",
+          "price": 1829900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html",
+          "campaign": 1722500
+        },
+        {
+          "date": "2026-08-05",
+          "price": 1969900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html",
+          "campaign": 1840500
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2009900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari",
+          "campaign": 1877900
+        },
+        {
           "date": "2026-10-05",
           "price": 2009900,
           "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
@@ -315,6 +569,23 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-03",
+          "price": 2214900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html"
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2269900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html",
+          "campaign": 2192200
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2269900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari",
+          "campaign": 2192200
+        },
         {
           "date": "2026-10-05",
           "price": 2269900,
@@ -334,6 +605,12 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-09-18",
+          "price": 2729900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari",
+          "campaign": 2389900
+        },
+        {
           "date": "2026-10-05",
           "price": 2729900,
           "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
@@ -352,6 +629,22 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-03",
+          "price": 1854900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html",
+          "campaign": 1791400
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2014900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html"
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2054900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari"
+        },
+        {
           "date": "2026-10-05",
           "price": 2054900,
           "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html"
@@ -368,6 +661,21 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-03",
+          "price": 2144900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html"
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2264900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html"
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2304900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari"
+        },
         {
           "date": "2026-10-05",
           "price": 2304900,
@@ -386,6 +694,21 @@
       "addedBy": "Eren",
       "prices": [
         {
+          "date": "2026-07-03",
+          "price": 2274900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html"
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2389900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html"
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2559900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari"
+        },
+        {
           "date": "2026-10-05",
           "price": 2559900,
           "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html"
@@ -402,6 +725,24 @@
       "transmission": "Otomatik",
       "addedBy": "Eren",
       "prices": [
+        {
+          "date": "2026-07-03",
+          "price": 2584900,
+          "source": "https://www.webtekno.com/temmuz-2026-skoda-fiyat-listesi-h219622.html",
+          "campaign": 2209700
+        },
+        {
+          "date": "2026-08-05",
+          "price": 2709900,
+          "source": "https://www.webtekno.com/agustos-2026-skoda-fiyat-listesi-h221722.html",
+          "campaign": 2316500
+        },
+        {
+          "date": "2026-09-18",
+          "price": 2779900,
+          "source": "https://www.araclo.com/sifir-arac-fiyatlari/eylul-2026-skoda-sifir-arac-fiyatlari",
+          "campaign": 2376300
+        },
         {
           "date": "2026-10-05",
           "price": 2779900,
