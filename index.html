@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sıfır Araç Fiyat Takibi</title>
+  <meta name="description" content="Türkiye'de sıfır araç liste fiyatlarının haftalık takibi.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>Sıfır Araç Fiyat Takibi</h1>
+      <p class="sub">Başlangıç (en düşük donanım) liste fiyatları · haftalık güncellenir · <span id="updated">…</span></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="controls">
+      <label>Marka
+        <select id="brand"><option value="">Tümü</option></select>
+      </label>
+      <label>Sırala
+        <select id="sort">
+          <option value="price-asc">Fiyat (artan)</option>
+          <option value="price-desc">Fiyat (azalan)</option>
+          <option value="change-desc">En çok zamlanan</option>
+          <option value="name">Marka / model</option>
+        </select>
+      </label>
+      <input id="q" type="search" placeholder="Model ara…" aria-label="Model ara">
+    </div>
+
+    <div id="list" class="grid" aria-live="polite"></div>
+  </main>
+
+  <footer class="wrap foot">
+    Fiyatlar marka sitelerindeki resmi fiyat listelerinden derlenir; her fiyatın kaynak linki kartta yer alır.
+    Kesin fiyat için yetkili bayiye danışın.
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

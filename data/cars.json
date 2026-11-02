@@ -1,0 +1,65 @@
+{
+  "updated": null,
+  "cars": [
+    {
+      "id": "fiat-egea-sedan",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    },
+    {
+      "id": "renault-clio",
+      "brand": "Renault",
+      "model": "Clio",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    },
+    {
+      "id": "toyota-corolla",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    },
+    {
+      "id": "hyundai-i20",
+      "brand": "Hyundai",
+      "model": "i20",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    },
+    {
+      "id": "dacia-duster",
+      "brand": "Dacia",
+      "model": "Duster",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    },
+    {
+      "id": "togg-t10x",
+      "brand": "Togg",
+      "model": "T10X",
+      "trim": "",
+      "fuel": "",
+      "transmission": "",
+      "addedBy": "Eren",
+      "prices": []
+    }
+  ]
+}

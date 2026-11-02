@@ -1,0 +1,69 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1b1f24;
+  --muted: #5f6b7a;
+  --line: #e3e6ea;
+  --accent: #2563eb;
+  --up: #c62828;
+  --down: #2e7d32;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111418;
+    --card: #1a1f25;
+    --text: #e8ebef;
+    --muted: #9aa5b1;
+    --line: #2a313a;
+    --accent: #6ea0ff;
+    --up: #ff6b6b;
+    --down: #5fd38a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.top { border-bottom: 1px solid var(--line); background: var(--card); padding: 20px 0 14px; }
+.top h1 { margin: 0; font-size: 1.5rem; }
+.sub { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 18px 0; }
+.controls label { display: flex; flex-direction: column; font-size: .8rem; color: var(--muted); gap: 4px; }
+select, input[type=search] {
+  font: inherit; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px;
+}
+input[type=search] { flex: 1; min-width: 160px; }
+
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;
+}
+.card h2 { margin: 0; font-size: 1.05rem; }
+.meta { color: var(--muted); font-size: .82rem; }
+.price { font-size: 1.45rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.chg { font-size: .85rem; font-weight: 600; }
+.chg.up { color: var(--up); }
+.chg.down { color: var(--down); }
+.chg.flat { color: var(--muted); }
+.spark { width: 100%; height: 48px; display: block; }
+.spark path { fill: none; stroke: var(--accent); stroke-width: 2; }
+.spark circle { fill: var(--accent); }
+.empty { color: var(--muted); font-style: italic; }
+
+details { font-size: .85rem; }
+summary { cursor: pointer; color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+td { padding: 3px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+td:last-child { text-align: right; }
+a { color: var(--accent); }
+
+.foot { color: var(--muted); font-size: .8rem; padding: 28px 16px 40px; }
+.msg { color: var(--muted); padding: 30px 0; }
