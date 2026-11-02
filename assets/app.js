@@ -37,9 +37,13 @@
   }
 
   function card(c) {
-    const spec = [c.trim, c.fuel, c.transmission].filter(Boolean).map(esc).join(" · ");
+    const spec = [c.engine, c.fuel, c.transmission].filter(Boolean).map(esc).join(" · ");
+    const campaign = c.last?.campaign
+      ? `<div class="camp">Kampanyalı: <b>${TL.format(c.last.campaign)}</b> (−${TL.format(c.last.price - c.last.campaign)})</div>`
+      : "";
     const body = c.last
-      ? `<div class="price">${TL.format(c.last.price)}</div>
+      ? `<div class="price">${TL.format(c.last.price)} <span class="lbl">liste</span></div>
+         ${campaign}
          ${changeBadge(c)}
          ${sparkline(c.prices)}
          <div class="meta">${fmtDate(c.last.date)} · <a href="${esc(c.last.source)}" target="_blank" rel="noopener">kaynak</a></div>
@@ -50,7 +54,7 @@
          </details>`
       : `<div class="empty">Henüz fiyat girilmedi.</div>`;
     return `<article class="card">
-      <h2>${esc(c.brand)} ${esc(c.model)}</h2>
+      <h3>${esc(c.trim || "Standart")}</h3>
       ${spec ? `<div class="meta">${spec}</div>` : ""}
       ${body}
     </article>`;
@@ -63,16 +67,33 @@
     const big = Number.MAX_SAFE_INTEGER;
     const list = cars
       .filter((c) => !brand || c.brand === brand)
-      .filter((c) => !q || `${c.brand} ${c.model} ${c.trim}`.toLocaleLowerCase("tr").includes(q))
+      .filter((c) => !q || `${c.brand} ${c.model} ${c.trim} ${c.engine}`.toLocaleLowerCase("tr").includes(q))
       .sort((a, b) => {
         switch (sort) {
           case "price-desc": return (b.last?.price ?? -1) - (a.last?.price ?? -1);
           case "change-desc": return (b.change ?? -big) - (a.change ?? -big);
-          case "name": return `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`, "tr");
+          case "name": return `${a.trim} ${a.engine}`.localeCompare(`${b.trim} ${b.engine}`, "tr");
           default: return (a.last?.price ?? big) - (b.last?.price ?? big);
         }
       });
-    $("list").innerHTML = list.length ? list.map(card).join("") : `<p class="msg">Eşleşen araç yok.</p>`;
+    if (!list.length) {
+      $("list").innerHTML = `<p class="msg">Eşleşen araç yok.</p>`;
+      return;
+    }
+    // Model bazında grupla (sıralama grup içinde uygulanır)
+    const groups = new Map();
+    for (const c of list) {
+      const key = `${c.brand} ${c.model}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(c);
+    }
+    const keys = [...groups.keys()].sort((a, b) => a.localeCompare(b, "tr"));
+    $("list").innerHTML = keys.map((k) => {
+      const items = groups.get(k);
+      const priced = items.filter((c) => c.last).map((c) => c.last.price);
+      const from = priced.length ? ` <span class="from">${TL.format(Math.min(...priced))}'den başlayan</span>` : "";
+      return `<section class="group"><h2>${esc(k)}${from}</h2><div class="grid">${items.map(card).join("")}</div></section>`;
+    }).join("");
   }
 
   async function init() {

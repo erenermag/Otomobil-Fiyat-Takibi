@@ -46,7 +46,12 @@ input[type=search] { flex: 1; min-width: 160px; }
   background: var(--card); border: 1px solid var(--line); border-radius: 12px;
   padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;
 }
-.card h2 { margin: 0; font-size: 1.05rem; }
+.group { margin-bottom: 28px; }
+.group h2 { font-size: 1.2rem; margin: 0 0 10px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.from { font-size: .85rem; font-weight: 500; color: var(--muted); }
+.card h3 { margin: 0; font-size: 1.05rem; }
+.lbl { font-size: .75rem; font-weight: 500; color: var(--muted); }
+.camp { font-size: .88rem; color: var(--down); }
 .meta { color: var(--muted); font-size: .82rem; }
 .price { font-size: 1.45rem; font-weight: 650; font-variant-numeric: tabular-nums; }
 .chg { font-size: .85rem; font-weight: 600; }

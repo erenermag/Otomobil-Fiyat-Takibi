@@ -1,65 +1,414 @@
 {
-  "updated": null,
+  "updated": "2026-11-02",
   "cars": [
     {
-      "id": "fiat-egea-sedan",
+      "id": "fiat-egea-sedan-easy-1-6-m-jet-130-hp-manuel",
       "brand": "Fiat",
       "model": "Egea Sedan",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "trim": "Easy",
+      "engine": "1.6 M.Jet 130 HP",
+      "fuel": "Dizel",
+      "transmission": "Manuel",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 1499900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644"
+        }
+      ]
     },
     {
-      "id": "renault-clio",
-      "brand": "Renault",
-      "model": "Clio",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "id": "fiat-egea-sedan-easy-1-6-m-jet-130-hp-dct-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "Easy",
+      "engine": "1.6 M.Jet 130 HP DCT",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 1950900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1850900
+        }
+      ]
     },
     {
-      "id": "toyota-corolla",
+      "id": "fiat-egea-sedan-urban-1-6-m-jet-130-hp-manuel",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "Urban",
+      "engine": "1.6 M.Jet 130 HP",
+      "fuel": "Dizel",
+      "transmission": "Manuel",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 1599900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1519900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-sedan-urban-1-6-m-jet-130-hp-dct-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "Urban",
+      "engine": "1.6 M.Jet 130 HP DCT",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 2020900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1920900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-sedan-lounge-1-6-m-jet-130-hp-manuel",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "Lounge",
+      "engine": "1.6 M.Jet 130 HP",
+      "fuel": "Dizel",
+      "transmission": "Manuel",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 1674900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1589900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-sedan-lounge-1-6-m-jet-130-hp-dct-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Sedan",
+      "trim": "Lounge",
+      "engine": "1.6 M.Jet 130 HP DCT",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 2090900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1990900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-cross-street-1-6-m-jet-130-hp-dct-traction-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Cross",
+      "trim": "Street",
+      "engine": "1.6 M.Jet 130 HP DCT Traction+",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 1990900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1890900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-cross-urban-1-6-m-jet-130-hp-dct-traction-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Cross",
+      "trim": "Urban",
+      "engine": "1.6 M.Jet 130 HP DCT Traction+",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 2026900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1926900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-cross-lounge-1-6-m-jet-130-hp-dct-traction-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Cross",
+      "trim": "Lounge",
+      "engine": "1.6 M.Jet 130 HP DCT Traction+",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 2062900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1962900
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-cross-limited-1-6-m-jet-130-hp-dct-traction-otomatik",
+      "brand": "Fiat",
+      "model": "Egea Cross",
+      "trim": "Limited",
+      "engine": "1.6 M.Jet 130 HP DCT Traction+",
+      "fuel": "Dizel",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-03",
+          "price": 2099900,
+          "source": "https://www.cnbce.com/otomotiv/fiat-ekim-ayi-fiyat-listesini-acikladi-en-cok-satan-modelde-kampanya-egea-fiyat-listesi-egea-cross-fiyat-listesi-fiat-ekim-fiyat-listesi-h38644",
+          "campaign": 1999900
+        }
+      ]
+    },
+    {
+      "id": "toyota-corolla-hybrid-dream-1-8-hybrid-e-cvt",
       "brand": "Toyota",
-      "model": "Corolla",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "model": "Corolla Hybrid",
+      "trim": "Dream",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 2968000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html"
+        }
+      ]
     },
     {
-      "id": "hyundai-i20",
-      "brand": "Hyundai",
-      "model": "i20",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "id": "toyota-corolla-hybrid-dream-x-pack-1-8-hybrid-e-cvt",
+      "brand": "Toyota",
+      "model": "Corolla Hybrid",
+      "trim": "Dream X-Pack",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 3053000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
+          "campaign": 2540000
+        }
+      ]
     },
     {
-      "id": "dacia-duster",
-      "brand": "Dacia",
-      "model": "Duster",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "id": "toyota-corolla-hybrid-flame-x-pack-1-8-hybrid-e-cvt",
+      "brand": "Toyota",
+      "model": "Corolla Hybrid",
+      "trim": "Flame X-Pack",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 3297000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
+          "campaign": 2775000
+        }
+      ]
     },
     {
-      "id": "togg-t10x",
-      "brand": "Togg",
-      "model": "T10X",
-      "trim": "",
-      "fuel": "",
-      "transmission": "",
+      "id": "toyota-corolla-cross-hybrid-flame-1-8-hybrid-e-cvt",
+      "brand": "Toyota",
+      "model": "Corolla Cross Hybrid",
+      "trim": "Flame",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
       "addedBy": "Eren",
-      "prices": []
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 3413000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
+          "campaign": 2899000
+        }
+      ]
+    },
+    {
+      "id": "toyota-corolla-cross-hybrid-passion-1-8-hybrid-e-cvt",
+      "brand": "Toyota",
+      "model": "Corolla Cross Hybrid",
+      "trim": "Passion",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 3660000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
+          "campaign": 3110000
+        }
+      ]
+    },
+    {
+      "id": "toyota-corolla-cross-hybrid-passion-x-pack-1-8-hybrid-e-cvt",
+      "brand": "Toyota",
+      "model": "Corolla Cross Hybrid",
+      "trim": "Passion X-Pack",
+      "engine": "1.8 Hybrid",
+      "fuel": "Hibrit",
+      "transmission": "e-CVT",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-06",
+          "price": 4234000,
+          "source": "https://www.webtekno.com/toyota-ekim-2026-fiyat-listesi-h226456.html",
+          "campaign": 3600000
+        }
+      ]
+    },
+    {
+      "id": "skoda-fabia-premium-1-0-tsi-115-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Fabia",
+      "trim": "Premium",
+      "engine": "1.0 TSI 115 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2009900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
+          "campaign": 1877900
+        }
+      ]
+    },
+    {
+      "id": "skoda-fabia-monte-carlo-1-5-tsi-150-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Fabia",
+      "trim": "Monte Carlo",
+      "engine": "1.5 TSI 150 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2269900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
+          "campaign": 2192200
+        }
+      ]
+    },
+    {
+      "id": "skoda-fabia-monte-carlo-130-edition-1-5-tsi-177-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Fabia",
+      "trim": "Monte Carlo 130 Edition",
+      "engine": "1.5 TSI 177 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2729900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
+          "campaign": 2389900
+        }
+      ]
+    },
+    {
+      "id": "skoda-scala-elite-1-0-tsi-115-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Scala",
+      "trim": "Elite",
+      "engine": "1.0 TSI 115 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2054900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html"
+        }
+      ]
+    },
+    {
+      "id": "skoda-scala-premium-1-0-tsi-115-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Scala",
+      "trim": "Premium",
+      "engine": "1.0 TSI 115 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2304900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html"
+        }
+      ]
+    },
+    {
+      "id": "skoda-scala-premium-1-5-tsi-150-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Scala",
+      "trim": "Premium",
+      "engine": "1.5 TSI 150 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2559900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html"
+        }
+      ]
+    },
+    {
+      "id": "skoda-scala-monte-carlo-1-5-tsi-150-ps-dsg-otomatik",
+      "brand": "Skoda",
+      "model": "Scala",
+      "trim": "Monte Carlo",
+      "engine": "1.5 TSI 150 PS DSG",
+      "fuel": "Benzin",
+      "transmission": "Otomatik",
+      "addedBy": "Eren",
+      "prices": [
+        {
+          "date": "2026-10-05",
+          "price": 2779900,
+          "source": "https://www.webtekno.com/ekim-2026-skoda-fiyat-listesi-h226352.html",
+          "campaign": 2376300
+        }
+      ]
     }
   ]
 }

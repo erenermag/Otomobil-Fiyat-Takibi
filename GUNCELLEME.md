@@ -5,29 +5,40 @@ Elle güncelleme yapan biri de aynı adımları izleyebilir.
 
 ## Ne takip ediliyor?
 
-`data/cars.json` içindeki her araç için **sıfır aracın Türkiye'deki başlangıç
-liste fiyatı**, yani o modelin satıştaki **en düşük donanım/motor seçeneğinin**
-anahtar teslim fiyatı (TL, KDV/ÖTV dahil).
+`data/cars.json` içindeki her kayıt, bir modelin **tek bir donanım + motor +
+şanzıman** seçeneğidir (ör. Egea Sedan · Urban · 1.6 M.Jet 130 HP DCT · Otomatik).
+Her kayıt için Türkiye'deki **tavsiye edilen anahtar teslim liste fiyatı**
+(TL, KDV/ÖTV dahil) takip edilir.
 
-Kampanya, indirimli veya kredi fiyatlarını değil, **liste fiyatını** kullan.
+- `price`: liste fiyatı (zorunlu).
+- `campaign`: o ay geçerli nakit kampanyalı fiyat (varsa, isteğe bağlı). Kredi
+  kampanyası veya bayi indirimi yazma.
+
+Takip edilen modeller: Fiat Egea Sedan, Fiat Egea Cross, Toyota Corolla Hybrid
+(sedan), Toyota Corolla Cross Hybrid, Skoda Fabia, Skoda Scala.
 
 ## Adımlar
 
 1. `main` dalından yeni bir dal aç: `fiyat-guncelleme-YYYY-AA-GG`.
-2. Her araç için güncel fiyatı bul. Kaynak önceliği:
+2. Her kayıt için güncel fiyatı bul. Kaynak önceliği:
    1. Markanın resmi Türkiye sitesindeki fiyat listesi (sayfa veya PDF)
    2. Distribütörün resmi fiyat listesi
-   3. Bunlar yoksa resmi listeyi açıkça alıntılayan güvenilir bir haber sitesi
-3. Her araç için `prices` dizisinin **sonuna** şu kaydı ekle:
+   3. Bunlar erişilemezse, o ayın resmi listesini tablo halinde yayımlayan
+      güvenilir bir haber sitesi (ör. webtekno.com, cnbce.com). Mümkünse iki
+      kaynağı karşılaştır; tutmuyorsa PR'da belirt.
+3. Fiyat **önceki kayıttan farklıysa** ya da yeni ayın listesi yayımlandıysa,
+   `prices` dizisinin **sonuna** şu kaydı ekle:
    ```json
-   { "date": "YYYY-AA-GG", "price": 1234500, "source": "https://..." }
+   { "date": "YYYY-AA-GG", "price": 1234500, "campaign": 1199500, "source": "https://..." }
    ```
-   - `price`: TL cinsinden tam sayı, nokta veya virgül kullanma.
+   - `date`: kaynağın yayın tarihi (listenin geçerli olduğu tarih).
+   - `price` / `campaign`: TL cinsinden tam sayı, nokta veya virgül kullanma.
    - `source`: Fiyatı **gerçekten gördüğün** sayfanın linki. Link yoksa kayıt ekleme.
-   - `date`: Güncellemenin yapıldığı gün. Aynı tarihte ikinci kayıt ekleme.
-4. Başlangıç donanımı değiştiyse `trim`, `fuel` ve `transmission` alanlarını güncelle.
-5. Fiyatı bulamadığın veya emin olmadığın araçlar için **kayıt ekleme**. Tahmin
-   etme, eski fiyatı tekrar yazma. Bu araçları PR açıklamasında listele.
+   - Aynı listeyi ikinci kez ekleme (aynı fiyat + aynı kaynak = yeni kayıt yok).
+4. Listeye **yeni donanım** eklendiyse yeni bir kayıt oluştur. Satıştan
+   kalkan donanımı silme; yeni fiyat eklemeyi bırak ve PR'da belirt.
+5. Fiyatı bulamadığın veya emin olmadığın kayıtlar için **fiyat ekleme**. Tahmin
+   etme, eski fiyatı tekrar yazma. Bunları PR açıklamasında listele.
 6. Dosyanın en üstündeki `"updated"` alanını bugünün tarihine çek.
 7. `node scripts/validate.mjs` çalıştır. Hata varsa düzelt.
 8. Commit at, dalı push'la ve `main` dalına **pull request** aç. PR açıklamasında
@@ -43,12 +54,13 @@ Kampanya, indirimli veya kredi fiyatlarını değil, **liste fiyatını** kullan
 
 ```json
 {
-  "id": "marka-model",
-  "brand": "Marka",
-  "model": "Model",
-  "trim": "",
-  "fuel": "",
-  "transmission": "",
+  "id": "skoda-scala-elite-1-0-tsi-115-ps-dsg-otomatik",
+  "brand": "Skoda",
+  "model": "Scala",
+  "trim": "Elite",
+  "engine": "1.0 TSI 115 PS DSG",
+  "fuel": "Benzin",
+  "transmission": "Otomatik",
   "addedBy": "İsim",
   "prices": []
 }

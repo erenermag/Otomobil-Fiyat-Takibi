@@ -50,6 +50,10 @@ for (const [i, car] of data.cars.entries()) {
     else prevDate = p.date;
     if (!Number.isInteger(p.price) || p.price <= 0) errors.push(`${at}: fiyat pozitif tam sayı (TL) olmalı`);
     if (!isUrl(p.source)) errors.push(`${at}: kaynak linki (source) zorunlu`);
+    if (p.campaign !== undefined) {
+      if (!Number.isInteger(p.campaign) || p.campaign <= 0) errors.push(`${at}: kampanyalı fiyat pozitif tam sayı olmalı`);
+      else if (p.campaign >= p.price) warnings.push(`${where} (${p.date}): kampanyalı fiyat liste fiyatından düşük değil`);
+    }
   }
 
   const n = car.prices.length;
@@ -57,11 +61,12 @@ for (const [i, car] of data.cars.entries()) {
   const last = car.prices[n - 1];
   const prev = n > 1 ? car.prices[n - 2] : null;
   const change = prev ? (last.price - prev.price) / prev.price : null;
+  const name = [car.brand, car.model, car.trim, car.engine].filter(Boolean).join(" ");
   if (change !== null && Math.abs(change) > BIG_CHANGE) {
-    warnings.push(`${car.brand} ${car.model}: ${fmt(prev.price)} → ${fmt(last.price)} (%${(change * 100).toFixed(1)})`);
+    warnings.push(`${name}: ${fmt(prev.price)} → ${fmt(last.price)} (%${(change * 100).toFixed(1)})`);
   }
   rows.push(
-    `| ${car.brand} ${car.model} ${car.trim ?? ""} | ${prev ? fmt(prev.price) : "—"} | ${fmt(last.price)} | ` +
+    `| ${name} | ${prev ? fmt(prev.price) : "—"} | ${fmt(last.price)} | ${last.campaign ? fmt(last.campaign) : "—"} | ` +
       `${change === null ? "yeni" : (change >= 0 ? "+" : "") + (change * 100).toFixed(1) + "%"}` +
       `${change !== null && Math.abs(change) > BIG_CHANGE ? " ⚠️" : ""} | [kaynak](${last.source}) |`
   );
@@ -69,11 +74,11 @@ for (const [i, car] of data.cars.entries()) {
 
 let report = `## Fiyat raporu (${data.updated ?? "henüz güncellenmedi"})\n\n`;
 if (rows.length) {
-  report += `| Araç | Önceki | Son | Değişim | Kaynak |\n|---|---|---|---|---|\n${rows.join("\n")}\n\n`;
+  report += `| Araç | Önceki liste | Son liste | Kampanyalı | Değişim | Kaynak |\n|---|---|---|---|---|---|\n${rows.join("\n")}\n\n`;
 } else {
   report += `Henüz fiyat verisi yok.\n\n`;
 }
-if (warnings.length) report += `### ⚠️ %${BIG_CHANGE * 100}'ten büyük değişimler — kaynağı kontrol et\n${warnings.map((w) => `- ${w}`).join("\n")}\n\n`;
+if (warnings.length) report += `### ⚠️ Kontrol edilmesi gerekenler (%${BIG_CHANGE * 100}'ten büyük değişimler vb.)\n${warnings.map((w) => `- ${w}`).join("\n")}\n\n`;
 if (errors.length) report += `### ❌ Hatalar\n${errors.map((e) => `- ${e}`).join("\n")}\n`;
 else report += `✅ Veri dosyası geçerli (${data.cars.length} araç).\n`;
 
