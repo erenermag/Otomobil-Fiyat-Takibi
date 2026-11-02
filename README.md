@@ -7,7 +7,7 @@ GitHub Pages üzerinde yayınlanan statik bir site.
 
 | Dosya | Görevi |
 |---|---|
-| `index.html`, `assets/` | Site: marka → model → donanım seçimi; fiyat kartları, değişim yüzdesi, fiyat geçmişi grafiği |
+| `index.html` | Site (CSS ve JS dahil, tek dosya): marka → model → donanım seçimi; fiyat kartları, değişim yüzdesi, fiyat geçmişi grafiği |
 | `data/cars.json` | Tüm veriler. Her fiyat kaydında tarih, TL tutarı ve kaynak linki bulunur |
 | `scripts/validate.mjs` | Veri dosyasını doğrular, %15'ten büyük değişimleri işaretler |
 | `GUNCELLEME.md` | Haftalık güncelleme talimatı (yapay zeka görevi veya elle güncelleme için) |
